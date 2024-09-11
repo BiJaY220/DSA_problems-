@@ -1,35 +1,53 @@
 package Arrays;
 
 public class Search_rotated {
+	// search a given value in a rotated and sorted array
 	//searching in sorted rotated array
-	// array -> {50,100,10, 20,30, 35,40}   O(n) O(1) target -> 20
-	// brute method ->
-	// optimal solution -> 
+	// array ->   O(n) O(1) target -> 20
+	// brute method ->O(n) -> worst best O(1)
+	// optimal solution -> Binary search (BS)
+	// steps -> mid target value = 100
+	// 
+	// {50,100,10, 20,30, 35,40}  -> target -> 100
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//{120,130,40,50,90,100} -> target -> 150
+	 // O(n/2) -> BS       
 	public static int search(int[] nums , int target) {
-		int start = 0, end = nums.length-1;
-		int mid = (start+end)/2;
-		while (start <= end ) {
-			mid = (start+end)/2;
-			if(target == nums[mid]) {
+		int left = 0, right = nums.length-1;// getting the index
+		int mid = (left+right)/2; // 2
+		while (left <= right ) {// 5<=5
+			mid = (left+right)/2; // 5
+			if(target == nums[mid]) {//
 				return mid;
 			}
-			if(nums[start]<=nums[mid]) {
-				if (nums[start]<=target && nums[mid]>=target) {
-					end = mid -1;
+			if(nums[left]<nums[mid]) {// left part is sorted yes
+				if (nums[left]<=target && nums[mid]>target) {// 20<30<50
+					right = mid -1; // 2
 					
 				}else {
-					start = mid +1;
+					left = mid +1;// 5
 					
 				}
-				
-				
-				
-			}else {
-				if(nums[end]>=target && nums[mid]<= target) {
-					start = mid +1;
+				}else {// right part sorted
+				if(nums[right]>=target && nums[mid]< target) {// 100>100
+					left = mid +1;//3
 					
 				}else {
-					end = mid -1;
+					right = mid -1;
 				}
 				
 			}
