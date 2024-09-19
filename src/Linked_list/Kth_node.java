@@ -10,6 +10,7 @@ class Knode
  {
      this.data = data;
      this.next = next;
+     
  }
 }
 
@@ -21,8 +22,11 @@ class Kth_node
  {
      Knode curr = head;
 
-     // move `k` Knodes ahead in the linked list
+     // move `k` Knodes ahead in the linked list // 
      for (int i = 0; curr != null && i < k; i++) {
+    	 // for loop ***
+    	 // 2 qn
+    	 //...
          curr = curr.next;
 
          // return if `k` is more than the total number of Knodes in the list
@@ -45,7 +49,7 @@ class Kth_node
  public static void main(String[] args)
  {
      // input keys
-     int[] keys = { 1, 2, 3, 4, 5 };
+     int[] keys = { 1, 2, 3, 4, 5 };// k ko value anusar value 
 
      Knode head = null;
      for (int i = keys.length - 1; i >= 0; i--) {
@@ -53,7 +57,7 @@ class Kth_node
      }
 
      int k = 2;
-     Knode Knode = findKthKnode(head, k);
+     Knode Knode = findKthKnode(head, k);// reutrn single data that is the kth data 
 
      if (Knode != null) {
          System.out.println("k'th Knode from the end is " + Knode.data);

@@ -18,13 +18,13 @@ public class RectArea {
      int tp; // To store top of stack
      int area_with_top; // To store area with top bar as
                         // the smallest bar
-
+     // 
      // Run through all bars of given histogram
      int i = 0;
      while (i < n) {
          // If this bar is higher than the bar on top
          // stack, push it to stack
-         if (s.empty() || hist[s.peek()] <= hist[i])
+         if (s.empty() || hist[s.peek()] <= hist[i])// 2
              s.push(i++);
 
          // If this bar is lower than top of stack, then
@@ -33,13 +33,13 @@ public class RectArea {
          // 'right index' for the top and element before
          // top in stack is 'left index'
          else {
-             tp = s.peek(); // store the top index
+             tp = s.peek(); // store the top index 
              s.pop(); // pop the top
 
              // Calculate the area with hist[tp] stack as
              // smallest bar
              area_with_top
-                 = hist[tp]
+                 = hist[tp]// 2
                    * (s.empty() ? i : i - s.peek() - 1);
 
              // update max area, if needed
@@ -51,15 +51,16 @@ public class RectArea {
      // Now pop the remaining bars from stack and
      // calculate area with every popped bar as the
      // smallest bar
+     // 6, 2, 5, 4, 5, 1, 6 
      while (s.empty() == false) {
-         tp = s.peek();
+         tp = s.peek();// 2
          s.pop();
-         area_with_top
-             = hist[tp]
+         area_with_top// 5
+             = hist[tp]// height of the given histogram 5, 
                * (s.empty() ? i : i - s.peek() - 1);
 
          if (max_area < area_with_top)
-             max_area = area_with_top;
+             max_area = area_with_top;// 5
      }
 
      return max_area;
