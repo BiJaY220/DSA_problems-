@@ -7,17 +7,21 @@ import java.util.Vector;
 // Heaps a complete binary tree(atmost 2 child)
 // max heap , min heap 
 // i(node)>= child -> i < = child
-// parent(i) = (i)/2  [12, 20 , 15, 25 , 78, 2] total no of data (i+1)
-// left child = 2*i
-// right child = 2*i +1
-
-
+// parent(i) = (i-1)/2  [12, 20 , 15, 25 , 78, 2] total no of data (i)
+// left child = 2*i +1
+// right child = 2*i +2
+//[ 2, 4, 5, 9 ,6]
+//  1  3  4  5  2
+// [30, 45, 50, 40, 20 , 35 , 10, ] heapy_up
+//   0   1   2  3   4     5    6   7
+// [30, 20 , 10, 15, 40]
+//   0   1   2    3   4    ->
 
 
 class PriorityQueue
 {
     // vector to store heap elements
-    private Vector<Integer> A;
+    private Vector<Integer> A;// > = new Vector()
  
     // constructor: use the default initial capacity of a vector
     public PriorityQueue() {
@@ -54,9 +58,9 @@ class PriorityQueue
     void swap(int x, int y)
     {
         // swap with a child having greater value
-        Integer temp = A.get(x);
-        A.setElementAt(A.get(y), x);
-        A.setElementAt(temp, y);
+        Integer temp = A.get(x);// x = 5, y = 6; temp = 5 , 
+        A.setElementAt(A.get(y), x);//x = 6 
+        A.setElementAt(temp, y);// y = 5
     }
  
     // Recursive heapify-down procedure. Here, the node at index `i`
@@ -67,7 +71,7 @@ class PriorityQueue
         int left = LEFT(i);
         int right = RIGHT(i);
  
-        int largest = i;
+        int largest = i;//
  
         // compare `A[i]` with its left and right child
         // and find the largest value
@@ -90,11 +94,11 @@ class PriorityQueue
     }
  
     // Recursive heapify-up procedure
-    private void heapify_up(int i)
+    private void heapify_up(int i)// i = 4
     {
         // check if the node at index `i` and its parent violates
         // the heap property
-        if (i > 0 && A.get(parent(i)) < A.get(i))
+        if (i > 0 && A.get(parent(i)) < A.get(i))// 20 < 40
         {
             // swap the two if heap property is violated
             swap(i, parent(i));
@@ -104,7 +108,7 @@ class PriorityQueue
         }
     }
  
-    // return size of the heap
+    // return size of the heap( max no of datas)
     public int size() {
         return A.size();
     }
